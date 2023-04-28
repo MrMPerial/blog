@@ -1,7 +1,7 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>Posts#edit</h1>
+<p>Find me in app/views/posts/edit.html.erb</p>
 
-<%= form_for :posts, url: posts_path do |f| %>
+<%= form_for :posts, url: post_path, method: :put do |f| %>
   Title: <br>
   <%= f.text_field :title %>
   <br>

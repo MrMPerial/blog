@@ -1,0 +1,32 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<% if session[:user_id] %>
+  <%= link_to "Logout" %>
+<% else %>
+  <%= link_to "Login", new_login_path %>
+<% end %>
+
+<%= link_to "Dashboard", dashboards_path %>
+
+<br>
+<br>
+
+<% if @posts %>
+  <% @posts.each do |post| %>
+    <% user = post.user_id %>
+    <% author = User.find(user).email %>
+    <ul style="list-style-type: none;">
+      <li>
+        <%= link_to post_path(post.id) do %>
+          <h2 style="margin-bottom: 0;"><%= post.title %></h2>
+          <small>By: <%= author %></small>
+        <% end %>
+        <br>
+        <% if @user %>
+          <%= link_to "Edit Post", edit_post_path(post.id) %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
